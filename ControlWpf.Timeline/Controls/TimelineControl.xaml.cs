@@ -46,6 +46,18 @@ namespace ControlWpf.Timeline.Controls
             set => SetValue(DateStopProperty, value);
         }
 
+        public Brush BorderBrushBlock
+        {
+            get => (Brush)GetValue(BorderBrushBlockProperty);
+            set => SetValue(BorderBrushBlockProperty, value);
+        }
+
+        public static DependencyProperty BorderBrushBlockProperty =
+            DependencyProperty.Register(nameof(BorderBrushBlock),
+                typeof(Brush),
+                typeof(TimelineControl),
+                new PropertyMetadata(Brushes.Black));
+
         public static DependencyProperty DateStartProperty =
             DependencyProperty.Register(nameof(DateStart),
                 typeof(DateTime),

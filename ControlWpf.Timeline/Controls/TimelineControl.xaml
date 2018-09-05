@@ -27,7 +27,8 @@
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <Button BorderBrush="Black" Background="Red"
+                <Button BorderBrush="{Binding BorderBrushBlock, ElementName=TimelineCtrl}" 
+                        Background="Red"
                         Content="{Binding Title}"
                         Width="{Binding Width}"
                         Height="{Binding Height}" />
