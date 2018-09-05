@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="ControlWpf.Timeline.Controls.TimelineControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ControlWpf.Timeline.Controls"
+             xmlns:converter="clr-namespace:WpfExtension.Timeline.Converters"
+             mc:Ignorable="d"
+             Name="TimelineCtrl">
+
+    <UserControl.Resources>
+        <converter:TimelineBlockWithSizeConverter x:Key="BlockToSizeConverter" />
+    </UserControl.Resources>
+
+    <ItemsControl>
+        <ItemsControl.ItemsSource>
+            <MultiBinding Converter="{StaticResource BlockToSizeConverter}">
+                <Binding Path="Blocks" />
+                <Binding Path="ActualWidth" ElementName="TimelineCtrl" />
+                <Binding Path="ActualHeight" ElementName="TimelineCtrl" />
+            </MultiBinding>
+        </ItemsControl.ItemsSource>
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal"/>
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <Button BorderBrush="Black" Background="Red"
+                        Content="{Binding Title}"
+                        Width="{Binding Width}"
+                        Height="{Binding Height}" />
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
+
+</UserControl>
