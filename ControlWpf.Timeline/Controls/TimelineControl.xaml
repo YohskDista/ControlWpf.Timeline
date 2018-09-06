@@ -25,15 +25,28 @@
                 <StackPanel Orientation="Horizontal"/>
             </ItemsPanelTemplate>
         </ItemsControl.ItemsPanel>
-        <ItemsControl.ItemTemplate>
-            <DataTemplate>
-                <Button BorderBrush="{Binding BorderBrushBlock, ElementName=TimelineCtrl}" 
-                        Background="Red"
-                        Content="{Binding Title}"
-                        Width="{Binding Width}"
-                        Height="{Binding Height}" />
-            </DataTemplate>
-        </ItemsControl.ItemTemplate>
+
+        <ItemsControl.Style>
+            <Style TargetType="ItemsControl">
+                <Setter Property="ItemTemplate" Value="{Binding BlockTemplate, ElementName=TimelineCtrl}" />
+
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding BlockTemplate, ElementName=TimelineCtrl}" Value="{x:Null}">
+                        <Setter Property="ItemTemplate">
+                            <Setter.Value>
+                                <DataTemplate>
+                                    <Button BorderBrush="{Binding BorderBrushBlock, ElementName=TimelineCtrl}" 
+                                        Background="White"
+                                        Content="{Binding Title}"
+                                        Width="{Binding Width}"
+                                        Height="{Binding Height}" />
+                                </DataTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ItemsControl.Style>
     </ItemsControl>
 
 </UserControl>

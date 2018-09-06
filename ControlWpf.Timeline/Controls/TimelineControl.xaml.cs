@@ -52,6 +52,18 @@ namespace ControlWpf.Timeline.Controls
             set => SetValue(BorderBrushBlockProperty, value);
         }
 
+        public DataTemplate BlockTemplate
+        {
+            get => (DataTemplate)GetValue(BlockTemplateProperty);
+            set => SetValue(BlockTemplateProperty, value);
+        }
+
+        public static DependencyProperty BlockTemplateProperty =
+            DependencyProperty.Register(nameof(BlockTemplate),
+                typeof(DataTemplate),
+                typeof(TimelineControl),
+                new PropertyMetadata(null));
+
         public static DependencyProperty BorderBrushBlockProperty =
             DependencyProperty.Register(nameof(BorderBrushBlock),
                 typeof(Brush),
